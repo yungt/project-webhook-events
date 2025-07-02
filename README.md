@@ -8,6 +8,7 @@ This project contains 3 components, and 1 docs folder:
 Please check out `README.md` file located in each component folder.
 
 ### Build and start all three services using docker compose
+Ensure you already have docker
 ```
 docker-compose up --build
 ```

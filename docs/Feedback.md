@@ -45,6 +45,7 @@ With these enhancements, we should have 99.99% availability with fast recovery t
 - Unit tests (ie: Jest)
 - Integration tests
 - UI tests (ie: Storybook, frontend only)
+- Monitoring endpoints api/heartbeat, api/healthcheck, etc.
 - Add logging, metrics, altering, tracing, synthetic monitoring
 - Cache layer
 - Security - Add api key (or auth), add csp (content security policy), and other secure headers

@@ -1,6 +1,6 @@
 import {WebhookEvent} from "../models/WebhookEvent";
 
-const URL = "http://localhost:3001/api/events";
+const URL = process.env.RECEIVER_SERVICE_EVENTS_URL || "";
 
 interface EventHandlers {
   onOpen?: () => void,

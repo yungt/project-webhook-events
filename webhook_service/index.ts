@@ -3,10 +3,11 @@ import dotenv from "dotenv";
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
 
+dotenv.config();
 
 const app: Express = express();
-const port = 3000;
-const WEBHOOK_URL = "http://receiver-service:3001/api/webhook";
+const port = process.env.PORT || 3000;
+const WEBHOOK_URL = process.env.WEBHOOK_URL || "";
 app.use(express.json());
 
 app.get("/", (req: Request, res: Response) => {

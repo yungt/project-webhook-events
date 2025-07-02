@@ -5,6 +5,7 @@ const nextConfig = {
   output: "standalone",
   env: {
     DEBUG: process.env.DEBUG,
+    PORT: process.env.PORT,
   },
 }
 

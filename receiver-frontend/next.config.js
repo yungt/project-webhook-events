@@ -5,6 +5,8 @@ const nextConfig = {
   output: "standalone",
   env: {
     DEBUG: process.env.DEBUG,
+    PORT: process.env.PORT,
+    RECEIVER_SERVICE_EVENTS_URL: process.env.RECEIVER_SERVICE_EVENTS_URL
   },
   experimental: {
     optimizePackageImports: ['@mantine/core', '@mantine/hooks'],

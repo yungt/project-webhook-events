@@ -10,6 +10,9 @@ services:
     container_name: receiver-frontend
     ports:
       - "3002:3002"
+    environment:
+      - PORT=3002
+      - RECEIVER_SERVICE_EVENTS_URL=http://receiver-service:3001/api/events
     depends_on:
       - receiver-service
     networks:
@@ -22,6 +25,8 @@ services:
     container_name: receiver-service
     ports:
       - "3001:3001"
+    environment:
+      - PORT=3001
     networks:
       - app-network
 
@@ -31,5 +36,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    environment:
+      - PORT=3000
+      - WEBHOOK_URL=http://receiver-service:3001/api/webhook
     networks:
       - app-network
