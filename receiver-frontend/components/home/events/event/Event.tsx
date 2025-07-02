@@ -10,8 +10,8 @@ export default function Event(props: Props) {
 
   return (
     <Table.Tr>
-      <Table.Td>{event.id}</Table.Td>
       <Table.Td>{event.timestamp}</Table.Td>
+      <Table.Td>{event.id}</Table.Td>
       <Table.Td>{event.event_type}</Table.Td>
       <Table.Td>{event.payload.actor}</Table.Td>
     </Table.Tr>
