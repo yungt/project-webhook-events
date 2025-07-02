@@ -1,6 +1,6 @@
 import {NextResponse} from "next/server";
 import {WebhookEvent} from "../../../backend/models/WebhookEvent";
-import {webhookEventBusService} from "../../../backend/services/impl/WebhookEventBusService";
+import {webhookEventBusService} from "../../../backend/services/bus/impl/WebhookEventBusService";
 
 export async function POST(req: Request) {
 

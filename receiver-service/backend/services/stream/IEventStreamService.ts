@@ -1,0 +1,3 @@
+interface IEventStreamService {
+  getCustomReadable(): ReadableStream;
+}

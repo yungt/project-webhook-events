@@ -1,5 +1,5 @@
 import {EventEmitter} from "events";
-import {WebhookEvent} from "../../models/WebhookEvent";
+import {WebhookEvent} from "../../../models/WebhookEvent";
 import {IEventBusService} from "../IEventBusService";
 
 class WebhookEventBusService extends EventEmitter implements IEventBusService<WebhookEvent> {
