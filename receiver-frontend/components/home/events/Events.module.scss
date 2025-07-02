@@ -1,5 +1,33 @@
+@use "@styles/variables" as *;
+
 .events {
 
+}
+
+.header {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .total {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  @media (max-width: $screenSmall) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    .total {
+      width: 100%;
+      text-align: left;
+    }
+  }
 }
 
 .tableHeader {
@@ -8,3 +36,4 @@
   justify-content: space-between;
   align-items: center;
 }
+

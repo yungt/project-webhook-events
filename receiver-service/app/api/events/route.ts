@@ -32,7 +32,7 @@ export async function GET() {
         try {
           controller.enqueue(encoder.encode(data));
         } catch (error) {
-          // Stream might be closed
+          // stream might be closed
           console.log("Stream closed, removing listener");
           webhookEventBusService.removeNewEventListener(handleNewEvent);
         }

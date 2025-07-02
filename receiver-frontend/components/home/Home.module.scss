@@ -5,10 +5,13 @@
   margin-right: auto;
 
   .header {
-
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: gray;
   }
 
-  .body {
+  .eventsContainer {
     margin-top: 32px;
   }
 }

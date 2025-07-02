@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const app: Express = express();
 const port = 3000;
-const WEBHOOK_URL = "http://localhost:3001/api/webhook";
+const WEBHOOK_URL = "http://receiver-service:3001/api/webhook";
 app.use(express.json());
 
 app.get("/", (req: Request, res: Response) => {

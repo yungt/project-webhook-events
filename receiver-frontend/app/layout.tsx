@@ -1,7 +1,8 @@
 import "@mantine/core/styles.css";
 import "@mantine/core/styles/UnstyledButton.css";
 import "@mantine/core/styles/Button.css";
-import "@mantine/core/styles/Tabs.css";
+import "@mantine/core/styles/Table.css";
+import "@mantine/core/styles/Pagination.css";
 import "@mantine/dates/styles.css";
 import "../styles/styles.scss";
 import type {Metadata} from "next";

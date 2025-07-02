@@ -9,7 +9,7 @@ const EVENT_URL = "http://localhost:3001/api/events";
 
 export default function Home() {
 
-  const [webhookEvents, setWebhookEvents] = useState<WebhookEvent[]>([]);
+  const [webhookEvents, setWebhookEvents] = useState<Array<WebhookEvent>>([]);
   const [connected, setConnected] = useState(false);
 
   useEffect(() => {
@@ -44,13 +44,11 @@ export default function Home() {
     <main className={styles.home}>
 
       <div className={styles.header}>
-        <div>Receiver Frontend - Webhook Events</div>
-        <div>Event subscription: {connected ? 'Connected' : 'Disconnected'}</div>
-        <div>Total items: {webhookEvents.length}</div>
+        <div>Subscription status: {connected ? "Connected" : "Disconnected"}</div>
+      </div>
 
-        <div className={styles.body}>
-          <Events events={webhookEvents}/>
-        </div>
+      <div className={styles.eventsContainer}>
+        <Events events={webhookEvents}/>
       </div>
 
     </main>

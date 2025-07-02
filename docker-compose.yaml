@@ -1,0 +1,35 @@
+networks:
+  app-network:
+    driver: bridge
+
+services:
+  receiver-frontend:
+    build:
+      context: ./receiver-frontend
+      dockerfile: Dockerfile
+    container_name: receiver-frontend
+    ports:
+      - "3002:3002"
+    depends_on:
+      - receiver-service
+    networks:
+      - app-network
+
+  receiver-service:
+    build:
+      context: ./receiver-service
+      dockerfile: Dockerfile
+    container_name: receiver-service
+    ports:
+      - "3001:3001"
+    networks:
+      - app-network
+
+  webhook_service:
+    build:
+      context: ./webhook_service
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
