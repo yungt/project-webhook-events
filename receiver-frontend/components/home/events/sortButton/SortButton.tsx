@@ -1,4 +1,4 @@
-import {SortTypes} from "../../../../frontend/lib/SortTypes";
+import {SortTypes} from "../../../../frontend/lib/sorts/types/SortTypes";
 import Svg from "../../../common/icons/Svg";
 import {Button} from "@mantine/core";
 import styles from "./SortButton.module.scss";

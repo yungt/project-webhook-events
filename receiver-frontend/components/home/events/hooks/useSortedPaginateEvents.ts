@@ -1,7 +1,8 @@
 import {WebhookEvent} from "../../../../frontend/models/WebhookEvent";
 import {useEffect, useState} from "react";
-import {SortTypes} from "../../../../frontend/lib/SortTypes";
-import {sortedTimestampDescending, sortStrategies} from "../../../../frontend/lib/SortUtils";
+import {SortTypes} from "../../../../frontend/lib/sorts/types/SortTypes";
+import {sortStrategies} from "../../../../frontend/lib/sorts/SortUtils";
+import {sortedTimestampDescending} from "../../../../frontend/lib/sorts/TimestampSortUtils";
 
 export const COUNT_PER_PAGE = 10;
 

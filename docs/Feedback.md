@@ -39,10 +39,10 @@ With these enhancements, we should have 99.99% availability with fast recovery t
 
 ### Additional improvements for each project components:
 
-- Infrastructure as code - Terraform or CDK
+- Infrastructure as code - Terraform or CDK when deploy to cloud
 - Runbook & Documents
 - Load tests
-- Unit tests (ie: Jest)
+- Improvement and refactoring for unit test
 - Integration tests
 - UI tests (ie: Storybook, frontend only)
 - Monitoring endpoints api/heartbeat, api/healthcheck, etc.

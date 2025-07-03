@@ -1,5 +1,6 @@
 # receiver-service
-A receiver service (Typescript and NextJS) that is capable of responding to HTTP requests sent by the webhook_service.
+A receiver service (Typescript and Next.js) that is capable of responding to HTTP requests sent by the webhook_service.
+This service also includes in-mem SSR to support client subscription on webhook events.
 
 ### Run and build using docker
 
@@ -19,27 +20,34 @@ Alternatively, all services can be build and run using `docker-compose.yaml` in 
 
 ### Run and build without docker
 
+#### Test
+```
+npm run test
+```
+
 #### Build
 ```
 npm run build
 ```
+Notes: `prebuild` also triggers `test`
 
 #### Run
 ```
-npm run start
+npm run start -p 3001
 ```
 
-Port `3001` is already set in `package.json` `script`
 #### Development
 ```
-npm run dev
+npm run dev -p 3001
 ```
 
-Open `http://localhost:3001` to view service
+Test the below api with `http://localhost:3001`
 
 ### API
-POST /api/webhook
 
+**POST /api/webhook**
+
+Description: Allow client to post webhook data to service
 - `WebhookEvent`:
   - id: string - ID of the event
   - timestamps: string - Timestamp of event
@@ -48,6 +56,10 @@ POST /api/webhook
 - `WebhookEventPayload`:
   - actor: string - Actor value
 
-GET /api/events
+**GET /api/events**
 
-Subscribe to events
+Description: Allow client to subscribe to new webhook data
+- `EventSubscription`:
+  - type: string - type of the subscription, this case we have webhook
+  - data: WebhookEvent
+  - timestamp: string - Timestamp of the subscription

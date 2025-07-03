@@ -1,17 +1,22 @@
 import {WebhookEvent} from "../models/WebhookEvent";
+import {EventSubscription} from "../models/EventSubscription";
 
 const URL = process.env.RECEIVER_SERVICE_EVENTS_URL || "";
 
-interface EventHandlers {
+export interface EventHandlers {
   onOpen?: () => void,
   onWebhookEvent?: (webhookEvent: WebhookEvent) => void,
   onError?: () => void,
 }
 
-class EventSubscriptionClient {
+export class EventSubscriptionClient {
   private eventSource: EventSource | null = null;
-  private readonly eventUrl = URL;
+  private readonly eventUrl: string;
   private handlers: EventHandlers = {};
+
+  constructor(url: string) {
+    this.eventUrl = url;
+  }
 
   subscribe(handlers: EventHandlers) {
     this.handlers = handlers;
@@ -22,6 +27,14 @@ class EventSubscriptionClient {
     }
   }
 
+  unsubscribe() {
+    if (this.eventSource) {
+      this.eventSource.close();
+      this.eventSource = null;
+    }
+    this.handlers = {};
+  }
+
   private setupEventListeners() {
     if (!this.eventSource) return;
 
@@ -30,10 +43,15 @@ class EventSubscriptionClient {
     };
 
     this.eventSource.onmessage = (event) => {
-      const data = JSON.parse(event.data);
+      let eventSubscription: EventSubscription | null = null;
+      try {
+        eventSubscription = JSON.parse(event.data);
+      } catch (error) {
+        console.log(error);
+      }
 
-      if (data.type === "webhook") {
-        const webhookEvent: WebhookEvent = data.data;
+      if (eventSubscription && eventSubscription.type === "webhook") {
+        const webhookEvent: WebhookEvent = eventSubscription.data;
         this.handlers.onWebhookEvent?.(webhookEvent);
       }
     };
@@ -42,14 +60,6 @@ class EventSubscriptionClient {
       this.handlers.onError?.();
     };
   }
-
-  unsubscribe() {
-    if (this.eventSource) {
-      this.eventSource.close();
-      this.eventSource = null;
-    }
-    this.handlers = {};
-  }
 }
 
-export const eventSubscriptionClient = new EventSubscriptionClient();
+export const eventSubscriptionClient = new EventSubscriptionClient(URL);

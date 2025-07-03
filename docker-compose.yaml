@@ -1,6 +1,6 @@
 networks:
   app-network:
-    driver: bridge
+    driver: bridge #if external, external: true
 
 services:
   receiver-frontend:

@@ -3,10 +3,10 @@
 import {Pagination, Table} from "@mantine/core";
 import {WebhookEvent} from "../../../frontend/models/WebhookEvent";
 import Event from "./event/Event";
-import {SortTypes} from "../../../frontend/lib/SortTypes";
 import styles from "./Events.module.scss";
 import SortButton from "./sortButton/SortButton";
 import {COUNT_PER_PAGE, useSortedPaginateEvents} from "./hooks/useSortedPaginateEvents";
+import {COLUMN_HEADERS} from "../../../frontend/home/events/ColumnHeaders";
 
 type Props = {
   events: Array<WebhookEvent>,
@@ -28,7 +28,7 @@ export default function Events(props: Props) {
   return (
     <div>
       <div className={styles.header}>
-        <div className={styles.total}>Events ({sortedEvents.length})</div>
+        <div aria-label={"Title"} className={styles.total}>Events ({sortedEvents.length})</div>
         <Pagination
           size={"sm"}
           total={Math.ceil(sortedEvents.length / COUNT_PER_PAGE)}
@@ -40,50 +40,21 @@ export default function Events(props: Props) {
       <Table withTableBorder withColumnBorders>
         <Table.Thead>
           <Table.Tr>
-            <Table.Th>
-              <div className={styles.tableHeader}>
-                <span>Timestamp</span>
-                <SortButton
-                  sortType={sortType}
-                  ascendingType={SortTypes.TIMESTAMP_ASCENDING}
-                  descendingType={SortTypes.TIMESTAMP_DESCENDING}
-                  onUpdate={setSortType}
-                />
-              </div>
-            </Table.Th>
-            <Table.Th>
-              <div className={styles.tableHeader}>
-                <span>ID</span>
-                <SortButton
-                  sortType={sortType}
-                  ascendingType={SortTypes.ID_ASCENDING}
-                  descendingType={SortTypes.ID_DESCENDING}
-                  onUpdate={setSortType}
-                />
-              </div>
-            </Table.Th>
-            <Table.Th>
-              <div className={styles.tableHeader}>
-                <span>Event Type</span>
-                <SortButton
-                  sortType={sortType}
-                  ascendingType={SortTypes.EVENT_TYPE_ASCENDING}
-                  descendingType={SortTypes.EVENT_TYPE_DESCENDING}
-                  onUpdate={setSortType}
-                />
-              </div>
-            </Table.Th>
-            <Table.Th>
-              <div className={styles.tableHeader}>
-                <span>Payload.Actor</span>
-                <SortButton
-                  sortType={sortType}
-                  ascendingType={SortTypes.PAYLOAD_ASCENDING}
-                  descendingType={SortTypes.PAYLOAD_DESCENDING}
-                  onUpdate={setSortType}
-                />
-              </div>
-            </Table.Th>
+
+            {COLUMN_HEADERS.map((columnHeader) => (
+              <Table.Th key={columnHeader.title}>
+                <div className={styles.tableHeader}>
+                  <span>{columnHeader.title}</span>
+                  <SortButton
+                    sortType={sortType}
+                    ascendingType={columnHeader.ascendingType}
+                    descendingType={columnHeader.descendingType}
+                    onUpdate={setSortType}
+                  />
+                </div>
+              </Table.Th>
+            ))}
+
           </Table.Tr>
         </Table.Thead>
 

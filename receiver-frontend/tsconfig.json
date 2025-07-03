@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["jest", "@testing-library/jest-dom"],
     "target": "es5",
     "lib": [
       "dom",
@@ -25,7 +26,8 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "@styles/*": ["styles/*"]
+      "@styles/*": ["styles/*"],
+      "@components/*": ["components/*"]
     }
   },
   "include": [

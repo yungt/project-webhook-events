@@ -1,5 +1,6 @@
 # receiver-frontend
-A web UI application (Typescript and NextJS) to display event data received by the receiver service.
+A web UI application (Typescript and Next.js) to display event data received by the receiver service.
+This application subscribes to receiver-service to obtain webhook event data.
 
 ### Run and build using docker
 
@@ -18,24 +19,29 @@ Open `http://localhost:3002` to view service
 Alternatively, all services can be build and run using `docker-compose.yaml` in the root folder
 
 ### Run and build without docker
+
+#### Test
+```
+npm run test
+```
+
 #### Build
 ```
 npm run build
 ```
+Notes: `prebuild` also triggers `test`
 
 #### Run
 ```
-npm run start
+npm run start -p 3002
 ```
 
-Port `3002` is already set in `package.json` `script`
 #### Development
 ```
-npm run dev
+npm run dev -p 3002
 ```
 
 Open `http://localhost:3002` to view service
 
 ### 3rd Party Libraries
-- Mantine https://mantine.dev/
-- 
+- UI Components: https://mantine.dev/

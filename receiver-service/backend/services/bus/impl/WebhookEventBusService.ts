@@ -2,7 +2,7 @@ import {EventEmitter} from "events";
 import {WebhookEvent} from "../../../models/WebhookEvent";
 import {IEventBusService} from "../IEventBusService";
 
-class WebhookEventBusService extends EventEmitter implements IEventBusService<WebhookEvent> {
+export class WebhookEventBusService extends EventEmitter implements IEventBusService<WebhookEvent> {
   private static instance: WebhookEventBusService;
 
   static getInstance(): WebhookEventBusService {
@@ -13,11 +13,19 @@ class WebhookEventBusService extends EventEmitter implements IEventBusService<We
   }
 
   emitNewEvent(webhookEvent: WebhookEvent) {
-    this.emit("webhook", webhookEvent);
+    try {
+      this.emit("webhook", webhookEvent);
+    } catch (error) {
+      console.error('Error emitting webhook event:', error);
+    }
   }
 
   onNewEvent(callback: (webhookEvent: WebhookEvent) => void) {
-    this.on("webhook", callback);
+    try {
+      this.on("webhook", callback);
+    } catch (error) {
+      console.error('Error in webhook event listener:', error);
+    }
   }
 
   removeNewEventListener(callback: (webhookEvent: WebhookEvent) => void) {

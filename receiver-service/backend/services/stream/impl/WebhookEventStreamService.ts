@@ -3,7 +3,7 @@ import {webhookEventBusService} from "../../bus/impl/WebhookEventBusService";
 
 const HEARTBEAT_DELAY = 30000;
 
-class WebhookEventStreamService implements IEventStreamService {
+export class WebhookEventStreamService implements IEventStreamService {
   private encoder = new TextEncoder();
 
   getCustomReadable(): ReadableStream {

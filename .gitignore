@@ -32,3 +32,6 @@ next-env.d.ts
 # IDEA
 /.idea/
 */.idea/
+
+# Jest Test Coverage
+*/__testsCoverage__/
