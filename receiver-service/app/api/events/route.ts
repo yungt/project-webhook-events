@@ -1,6 +1,6 @@
 import {webhookEventStreamService} from "../../../backend/services/stream/impl/WebhookEventStreamService";
 
-const ALLOW_ORIGIN = "http://localhost:3002";
+const ALLOW_ORIGIN = process.env.ALLOW_ORIGIN || "";
 
 export async function OPTIONS() {
   return new Response(null, {

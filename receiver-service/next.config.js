@@ -6,6 +6,7 @@ const nextConfig = {
   env: {
     DEBUG: process.env.DEBUG,
     PORT: process.env.PORT,
+    ALLOW_ORIGIN: process.env.ALLOW_ORIGIN,
   },
 }
 
