@@ -48,6 +48,34 @@ Test the below api with `http://localhost:3001`
 **POST /api/webhook**
 
 Description: Allow client to post webhook data to service
+
+Request:
+
+```json
+{
+  "id": "id",
+  "timestamp": "timestamp",
+  "event_type": "event_type",
+  "payload": {"actor":  "actor"}
+}
+```
+
+Response:
+
+200 OK
+```json
+{
+  "status": "200"
+}
+```
+
+400 Bad Request
+```json
+{
+  "status": "400"
+}
+```
+Models:
 - `WebhookEvent`:
   - id: string - ID of the event
   - timestamps: string - Timestamp of event
@@ -56,9 +84,25 @@ Description: Allow client to post webhook data to service
 - `WebhookEventPayload`:
   - actor: string - Actor value
 
+Response Body:
+
+
 **GET /api/events**
 
 Description: Allow client to subscribe to new webhook data
+
+Response:
+
+200 OK
+```json
+{
+  "type": "type",
+  "data": "data",
+  "timestamp": "timestamp"
+}
+```
+
+Models:
 - `EventSubscription`:
   - type: string - type of the subscription, this case we have webhook
   - data: WebhookEvent
