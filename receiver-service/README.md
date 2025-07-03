@@ -84,9 +84,6 @@ Models:
 - `WebhookEventPayload`:
   - actor: string - Actor value
 
-Response Body:
-
-
 **GET /api/events**
 
 Description: Allow client to subscribe to new webhook data
