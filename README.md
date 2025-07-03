@@ -2,7 +2,7 @@
 
 This project contains 3 components, and 1 docs folder:
 
-- `webhok_service` - emits webhook events
+- `webhook_service` - emits webhook events
 - `receiver-service` - receive webhook events (also contains an in-mem event bus to support client event subscription)
 - `receiver-frontend` - display webhook events
 - `docs` - contains system design diagram & feedback / notes
@@ -31,7 +31,7 @@ docker-compose down
 ### Checkout WEB UI component (receiver-frontend) after services are up
 
 - Open 'http://localhost:3002' on your bowser. If all services are running, webhook event data should be populated in
-  the table (between 1-5s).
+  the table.
 
 #### Services and port number
 
